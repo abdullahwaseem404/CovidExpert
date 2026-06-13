@@ -1,55 +1,64 @@
-# 🩺 CovidExpert
-# COVID-19 X-Ray Classification App
+# 🩺 CovidExpert AI - X-Ray Diagnosis
 
-A machine learning–based system for detecting **COVID-19 from chest X-ray images** using image processing and a **Neural Network (MLP)**, deployed with an interactive **Streamlit web app**.
+CovidExpert AI is a deep learning-based web application that detects COVID-19 from chest X-ray images using state-of-the-art CNN architectures like ResNet, EfficientNet, and DenseNet.
 
-Working Demo : https://youtu.be/D7nj08EJD7U
+---
 
 ## 🚀 Features
-- Binary classification: **COVID vs Normal**
-- Image preprocessing with OpenCV (grayscale, resizing)
-- Neural Network model using Scikit-learn (MLPClassifier)
-- Model training, validation, and testing pipeline
-- Confusion matrix and classification report
-- Trained model persistence using Joblib
-- Streamlit-based image upload & prediction interface
 
-## 🧠 Model & Approach
-- Images resized to **150×150** and flattened
-- Train/Validation/Test split (70/15/15)
-- Baseline and tuned MLP models evaluated
-- Final tuned model achieved:
-  - **93% Test Accuracy**
-  - High recall for COVID class
+* 📷 Upload chest X-ray images
+* 🤖 AI-powered COVID-19 detection
+* 📊 Confidence score for predictions
+* 🔥 Grad-CAM visualization for model interpretability
+* ⚡ Built with Streamlit for fast deployment
 
-## 📊 Model Performance
-- **Validation Accuracy:** 100%
-- **Test Accuracy:** 93.3%
+---
 
-## 🛠️ Tech Stack
-- Python
-- NumPy
-- Pandas
-- OpenCV
-- Scikit-learn
-- Matplotlib
-- Seaborn
-- Streamlit
-- Joblib
+## 🧠 Models Used
 
-## ▶️ How to Run
-1. Clone the repository:
+* ResNet50
+* EfficientNetB0
+* DenseNet121
+
+All models use transfer learning with ImageNet weights and are fine-tuned for binary classification (COVID vs Normal).
+
+---
+
+## 🛠️ Installation
+
 ```bash
 git clone https://github.com/abdullahwaseem404/CovidExpert.git
-```
-2. Install dependencies:
-```bash
 pip install -r requirements.txt
 ```
-3. Run the Streamlit app:
+
+---
+
+## ▶️ Run the App
+
 ```bash
 streamlit run app.py
 ```
 
-## ⚠️ Disclaimer
-This project is for **educational purposes only** and should not be used for real-world medical diagnosis.
+---
+
+## 🏋️ Training Models
+
+```bash
+python train.py
+```
+
+This will train ResNet, EfficientNet, and DenseNet models and save the best versions based on validation accuracy.
+
+---
+
+## 📊 Dataset
+
+Organize dataset as:
+
+```
+dataset/
+├── covid/
+└── normal/
+```
+
+---
