@@ -1,64 +1,117 @@
-# 🩺 CovidExpert AI - X-Ray Diagnosis
+# 🩺 CovidExpert AI – X-Ray Diagnosis
 
-CovidExpert AI is a deep learning-based web application that detects COVID-19 from chest X-ray images using state-of-the-art CNN architectures like ResNet, EfficientNet, and DenseNet.
-
----
+CovidExpert AI is a deep learning-based web application for classifying chest X-ray images as COVID or Normal.
+It uses transfer learning with CNN architectures and provides confidence scores through an interactive Streamlit interface.
 
 ## 🚀 Features
 
-* 📷 Upload chest X-ray images
-* 🤖 AI-powered COVID-19 detection
-* 📊 Confidence score for predictions
-* 🔥 Grad-CAM visualization for model interpretability
-* ⚡ Built with Streamlit for fast deployment
+📷 **Chest X-Ray Upload**
 
----
+* Upload JPG, JPEG, or PNG X-ray images
+* Display the uploaded X-ray before prediction
 
-## 🧠 Models Used
+🤖 **AI-Powered Classification**
+
+* COVID vs Normal classification
+* Confidence score for predictions
+* Probability breakdown for both classes
+
+🧠 **Deep Learning Models**
 
 * ResNet50
 * EfficientNetB0
 * DenseNet121
 
-All models use transfer learning with ImageNet weights and are fine-tuned for binary classification (COVID vs Normal).
+🏆 **Best Model**
 
----
+* DenseNet121 achieved the highest test accuracy
+* Test Accuracy: **94.74%**
+* Precision: **0.95**
+* Recall: **0.95**
+* F1-Score: **0.95**
 
-## 🛠️ Installation
+⚡ **Streamlit Application**
+
+* Simple and responsive interface
+* Loads the trained DenseNet model
+* Displays prediction and confidence results
+
+## 🧠 Model Training
+
+All three CNN architectures use transfer learning with ImageNet-pretrained weights.
+
+The models are trained for binary classification:
+
+* `0` → COVID
+* `1` → Normal
+
+Training uses:
+
+* Image size: 224 × 224
+* Adam optimizer
+* Binary cross-entropy loss
+* Early stopping
+* Model checkpointing
+
+## 📊 Model Performance
+
+| Model           | Test Accuracy |
+| --------------- | ------------: |
+| ResNet50        |        73.68% |
+| EfficientNetB0  |        73.68% |
+| **DenseNet121** |    **94.74%** |
+
+DenseNet121 was selected as the final model based on test accuracy.
+
+## ⚙️ Installation
 
 ```bash
 git clone https://github.com/abdullahwaseem404/CovidExpert.git
 pip install -r requirements.txt
 ```
 
----
-
 ## ▶️ Run the App
+
+First train the models using `train.ipynb`.
+
+The best model weights are saved to:
+
+```text
+models/best_model.weights.h5
+```
+
+Then run the Streamlit application:
 
 ```bash
 streamlit run app.py
 ```
 
----
+## 📁 Dataset Structure
 
-## 🏋️ Training Models
+Organize the dataset as:
 
-```bash
-python train.py
-```
-
-This will train ResNet, EfficientNet, and DenseNet models and save the best versions based on validation accuracy.
-
----
-
-## 📊 Dataset
-
-Organize dataset as:
-
-```
+```text
 dataset/
 ├── covid/
 └── normal/
 ```
+
+The current training dataset contains **94 X-ray images**:
+
+* 69 COVID images
+* 25 Normal images
+
+## 🛠️ Tech Stack
+
+* Python
+* TensorFlow / Keras
+* OpenCV
+* NumPy
+* Scikit-learn
+* Streamlit
+
+## ⚠️ Disclaimer
+
+This project is intended for **educational and research purposes only**. It is not a medical diagnostic system and should not be used to make medical decisions.
 
 ---
